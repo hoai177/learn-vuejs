@@ -1,12 +1,22 @@
 <template>
   <h1>Learn vuejs</h1>
-  <button @click="state.count++">Increment {{ state.count }}</button>
+  <button @click="increment">Increment {{ this.count }}</button>
 </template>
 
-<script setup>
-import {reactive } from 'vue'
+<script>
 
+ export default {
+    data () {
+      return {
+       count: 0
+      }
+    },
+    methods: {
+        increment() {
+            this.count = this.count+1
+        }
+    }
+}
 
-const state = reactive({ count: 0 })
 </script>
 
