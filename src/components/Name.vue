@@ -1,15 +1,14 @@
 <template>
   <h1>Learn vuejs</h1>
   <h2>{{ this.count }}</h2>
-  <button @click="increment">Increment</button>
-  <Button @decrement-count="decrement"></Button>
+  <ButtonCount @decrement-count="onDecrement" @increment-count="onIncrement"></ButtonCount>
 </template>
 
 <script>
-import Button from "./Button.vue"
+import ButtonCount from "./ButtonCount.vue"
  export default {
     components: {
-      Button
+      ButtonCount
     },
     data () {
       return {
@@ -17,10 +16,10 @@ import Button from "./Button.vue"
       }
     },
     methods: {
-        increment() {
+        onIncrement() {
           this.count++
         },
-        decrement() {
+        onDecrement() {
           this.count--
         }
     }
