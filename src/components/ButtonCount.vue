@@ -1,16 +1,14 @@
 <template>
-    <button @click="onIncrement">Increment</button>
-    <button @click="onDecrement">decrement</button>
+    <button @click="onCount">
+        <slot></slot>
+    </button>
 </template>
 
 <script>
  export default {
       methods: {
-        onIncrement() {
-            this.$emit('incrementCount')
-        },
-        onDecrement() {
-            this.$emit('decrementCount')
+        onCount() {
+            this.$emit('onCount');
         }
       }
     }
