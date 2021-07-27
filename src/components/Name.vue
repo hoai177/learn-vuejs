@@ -21,7 +21,9 @@ import ButtonCount from "./ButtonCount.vue"
           this.count++
         },
         onDecrement() {
-          this.count--
+          if(this.count > 0) {
+            this.count--
+          }
         }
     }
 }
