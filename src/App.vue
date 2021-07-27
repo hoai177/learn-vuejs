@@ -1,5 +1,7 @@
 <template>
   <name msg="Hello Vue 3 + Vite" />
+  <router-link to="/todo">Go to Todo</router-link>
+  <router-view />
 </template>
 
 <script setup>
