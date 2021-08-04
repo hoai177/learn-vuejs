@@ -33,7 +33,6 @@ export default {
           this.error = ''
         } else {
           this.error = 'Please enter the value!'
-          console.log(this.error, 'this.error')
         }
         e.preventDefault();
       },
