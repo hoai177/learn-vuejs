@@ -68,10 +68,11 @@ body {
     margin-bottom: 20px;
   }
   input[type="text"] {
-    width: 89%;
+    width: 85%;
     height: 30px;
     border: 1px solid #ccccccb3;
     border-radius: 3px;
+    padding: 0 10px;
   }
   input[type="text"]:focus {
     outline: none;
