@@ -27,13 +27,10 @@ export default {
     },
     methods: {
       submitForm (e) {
-        if(this.name != '') {
-          this.dataName.push(this.name)
-          this.name = ''
-          this.error = ''
-        } else {
-          this.error = 'Please enter the value!'
-        }
+        if (!this.name) { this.error = 'Please enter the value!' }
+        this.dataName.push(this.name)
+        this.name = ''
+        this.error = ''
         e.preventDefault();
       },
       removeName (index) {
