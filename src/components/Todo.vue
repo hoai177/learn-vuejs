@@ -29,6 +29,7 @@ export default {
       submitForm (e) {
         e.preventDefault();
         if(!this.name) { return this.error = 'Please enter the value!' };
+        if(this.dataName.length > 4) {return this.error = 'Bạn Cần Hoàn Thành Công Việc!!' };
           this.dataName.push(this.name);
           this.name = '';
           this.error = ''
