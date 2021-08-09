@@ -8,6 +8,7 @@
       <input type="submit" value="Add"> 
     </form>
     <p class="error">{{ this.error }}</p>
+    <p class="notify">{{this.notify}}</p>
     <ul>
       <li v-for="(name, index) in dataName" v-bind:key="index">
         {{ name }} <button @click="removeName(index)" class="remove">Remove</button>
@@ -22,14 +23,15 @@ export default {
       return {
         dataName: [],
         name:'',
-        error: ''
+        error: '',
+        notify: ''
       }
     },
     methods: {
       submitForm (e) {
         e.preventDefault();
         if(!this.name) { return this.error = 'Please enter the value!' };
-        if(this.dataName.length > 4) {return this.error = 'Bạn Cần Hoàn Thành Công Việc!!' };
+        if(this.dataName.length > 4) {return this.notify = 'Bạn Cần Hoàn Thành Công Việc!!' };
           this.dataName.push(this.name);
           this.name = '';
           this.error = ''
@@ -93,8 +95,12 @@ body {
       background: #fff;
       cursor: pointer;
   }
-  .error {
+  .error{
     text-align: left;
     color: #f5222d;
+  }
+  .notify  {
+    text-align: left;
+    color: #ffc800;
   }
 </style>
