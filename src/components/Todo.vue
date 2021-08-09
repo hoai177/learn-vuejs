@@ -8,7 +8,7 @@
       <input type="submit" value="Add"> 
     </form>
     <p class="error">{{ this.error }}</p>
-    <p class="notify">{{ reversedMessage }}</p>
+    <p class="notify">{{ notifyWork }}</p>
     <ul>
       <li v-for="(name, index) in dataName" v-bind:key="index">
         {{ name }} <button @click="removeName(index)" class="remove">Remove</button>
@@ -40,7 +40,7 @@ export default {
       },
     },
     computed: {
-        reversedMessage: function () {
+        notifyWork: function () {
           if(this.dataName.length > 5) {return this.message}
         }
     },
