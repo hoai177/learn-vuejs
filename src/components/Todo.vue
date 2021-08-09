@@ -24,7 +24,6 @@ export default {
         dataName: [],
         name:'',
         error: '',
-        message: 'Bạn Cần Hoàn Thành Công Việc!!'
       }
     },
     methods: {
@@ -41,7 +40,7 @@ export default {
     },
     computed: {
         notifyWork() {
-          if(this.dataName.length > 5) {return this.message}
+          if(this.dataName.length > 5) {return 'Bạn Cần Hoàn Thành Công Việc!!'}
         }
     },
 }
