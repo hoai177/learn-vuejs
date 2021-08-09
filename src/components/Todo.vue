@@ -8,7 +8,7 @@
       <input type="submit" value="Add"> 
     </form>
     <p class="error">{{ this.error }}</p>
-    <p class="notify">{{this.notify}}</p>
+    <p class="notify">{{ reversedMessage }}</p>
     <ul>
       <li v-for="(name, index) in dataName" v-bind:key="index">
         {{ name }} <button @click="removeName(index)" class="remove">Remove</button>
@@ -24,22 +24,26 @@ export default {
         dataName: [],
         name:'',
         error: '',
-        notify: ''
+        message: 'Bạn Cần Hoàn Thành Công Việc!!'
       }
     },
     methods: {
       submitForm (e) {
         e.preventDefault();
         if(!this.name) { return this.error = 'Please enter the value!' };
-        if(this.dataName.length > 4) {return this.notify = 'Bạn Cần Hoàn Thành Công Việc!!' };
           this.dataName.push(this.name);
           this.name = '';
           this.error = ''
       },
       removeName (index) {
         this.dataName.splice(index, 1);
-      }
-    }
+      },
+    },
+    computed: {
+        reversedMessage: function () {
+          if(this.dataName.length > 5) {return this.message}
+        }
+    },
 }
 </script>
 
