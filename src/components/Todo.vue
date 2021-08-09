@@ -40,7 +40,7 @@ export default {
       },
     },
     computed: {
-        notifyWork: function () {
+        notifyWork() {
           if(this.dataName.length > 5) {return this.message}
         }
     },
