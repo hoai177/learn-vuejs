@@ -1,5 +1,4 @@
 <template>
-<h1>Learn vuejs</h1>
   <h2>{{ this.count }}</h2>
 <ButtonCount @onCount="onIncrement">Icrement</ButtonCount>
 <ButtonCount @onCount="onDecrement">Decrement</ButtonCount>
