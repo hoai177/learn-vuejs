@@ -1,8 +1,7 @@
 <template>
   <h1>Learn vuejs</h1>
   <br>
-  <router-link to="/todo">Go to Todo</router-link> <br>
-  <router-link to="/home">Go to home</router-link>
+  <router-link to="/todo">Go to Todo</router-link>
   <router-view />
 </template>
 

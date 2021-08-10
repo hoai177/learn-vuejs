@@ -9,7 +9,7 @@ const routes = [
         component: Todo
     },
     {
-        path: '/home',
+        path: '/',
         name: 'Home',
         component: Home
     }
