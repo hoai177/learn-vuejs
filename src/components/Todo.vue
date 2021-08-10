@@ -7,7 +7,7 @@
       <input type="text" v-model="name" placeholder="Add Todo">
       <input type="submit" value="Add"> 
     </form>
-    <p class="error">{{ this.error }}</p>
+    <p class="error">{{ error }}</p>
     <p class="notify">{{ notifyWork }}</p>
     <ul>
       <li v-for="(name, index) in dataName" v-bind:key="index">
@@ -46,10 +46,7 @@ export default {
 }
 </script>
 
-<style>
-body {
-  background-color: #E8FEFD;
-}
+<style scoped>
 .title {
   text-align: left;
 }

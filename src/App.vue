@@ -1,17 +1,18 @@
 <template>
-  <name msg="Hello Vue 3 + Vite" />
+  <home />
   <router-link to="/todo">Go to Todo</router-link>
   <router-view />
 </template>
 
 <script setup>
-import Name from './components/Name.vue'
+import Home from './components/Home.vue'
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
 </script>
 
 <style>
+@import './assets/css/style.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
