@@ -4,7 +4,8 @@
   <ButtonCount @onCount="onDecrement">Decrement</ButtonCount>
   <div class="box-posts">
     <h2 class="title">Post List</h2>
-    <table>
+    <div v-if="loading"><i class="fas fa-spinner"></i></div>
+    <table v-else>
       <thead>
         <tr>
           <th>id</th>
@@ -35,13 +36,15 @@ import axios from 'axios'
     data () {
       return {
        count: 0,
-       postList: []
+       postList: [],
+       loading: true
       }
     },
     created() {
       axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => this.postList = response.data)
       .catch(error => console.log(error))
+      .finally(() => this.loading = false)
     },
     methods: {
         onIncrement() {
