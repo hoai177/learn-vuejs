@@ -37,16 +37,9 @@ import axios from 'axios'
       return {
        count: 0,
        postList: [],
-       loading: true
+       loading: true,
+       timer: null
       }
-    },
-    created() {
-      setTimeout(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(response => this.postList = response.data)
-        .catch(error => console.log(error))
-        .finally(() => this.loading = false)
-      }, 2000)
     },
     methods: {
         onIncrement() {
@@ -56,8 +49,22 @@ import axios from 'axios'
           if(this.count > 0) {
             this.count--
           }
+        },
+        getPost() {
+          axios.get('https://jsonplaceholder.typicode.com/posts')
+          .then(response => this.postList = response.data)
+          .catch(error => console.log(error))
+          .finally(() => this.loading = false)
         }
-    }
+    },
+    created() {
+      this.timer = setTimeout(() => {
+        this.getPost()
+      }, 2000)
+    },
+    beforeUnmount() {
+      clearTimout(this.timer)
+    },
 }
 
 </script>
