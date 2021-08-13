@@ -41,10 +41,12 @@ import axios from 'axios'
       }
     },
     created() {
-      axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => this.postList = response.data)
-      .catch(error => console.log(error))
-      setTimeout(() => (this.loading = false), 2000)
+      setTimeout(() => {
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then(response => this.postList = response.data)
+        .catch(error => console.log(error))
+        .finally(() => this.loading = false)
+      }, 2000)
     },
     methods: {
         onIncrement() {
