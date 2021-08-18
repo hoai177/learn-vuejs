@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody v-if="postList && postList.length">
-        <tr v-for="(post, index) in postList" v-bind:key="index" v-show="setPaginate(index)">
+        <tr v-for="(post, index) in postList" :key="index" v-show="setPaginate(index)">
           <td>{{ post.id }}</td>
           <td>{{ post.userId }}</td>
           <td>{{ post.title }}</td>
@@ -26,7 +26,7 @@
     </table>
     <div class="pagination">
       <button @click="current--" v-if="current != 1"><i class="fas fa-chevron-left"></i></button>
-      <button v-for="pageNumber in paginate_total" v-bind:key="pageNumber" @click="current = pageNumber" v-bind:class="{'active':current === pageNumber}">{{ pageNumber}}</button>
+      <button v-for="pageNumber in paginate_total" :key="pageNumber" @click="current = pageNumber" :class="{'active':current === pageNumber}">{{ pageNumber}}</button>
       <button @click="current++" v-if="current < paginate"><i class="fas fa-chevron-right"></i></button>
     </div>
   </div>
