@@ -26,7 +26,7 @@
     </table>
     <div class="pagination">
       <button @click="current--" v-if="current != 1"><i class="fas fa-chevron-left"></i></button>
-      <button v-for="pageNumber in paginate_total" v-bind:key="pageNumber" @click="current = pageNumber">{{ pageNumber}}</button>
+      <button v-for="pageNumber in paginate_total" v-bind:key="pageNumber" @click="current = pageNumber" v-bind:class="{'active':current === pageNumber}">{{ pageNumber}}</button>
       <button @click="current++" v-if="current < paginate"><i class="fas fa-chevron-right"></i></button>
     </div>
   </div>
@@ -103,9 +103,15 @@ table th, table td {
     width: 50px;
     height: 30px;
     margin-right: 10px;
+    border: 2px solid #2AB564;
+    background: #fff;
+    color: #2AB564;
+    font-weight: bold;
+    cursor: pointer;
 }
-button {
-  cursor: pointer;
+.pagination button.active {
+  background: #2AB564;
+  color: #fff;
 }
 </style>
 
