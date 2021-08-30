@@ -33,6 +33,7 @@
 <script>
 import ButtonCount from "./ButtonCount.vue";
 import axios from 'axios'
+import { mapActions } from 'vuex'
 
  export default {
     components: {
@@ -60,9 +61,9 @@ import axios from 'axios'
           if (this.current == 1) return i < this.paginate;
           else return i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate);
         },
-        addPost(post) {
-          this.$store.dispatch("addPost", post);
-        }
+        ...mapActions([
+          'addPost',
+        ])
     },
     created() {
       this.timer = setTimeout(() => {
