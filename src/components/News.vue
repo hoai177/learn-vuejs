@@ -1,5 +1,5 @@
 <template>
-  <div class="box-posts">
+   <div class="box-posts">
     <h2 class="title">Post List</h2>
     <div v-if="loading"><i class="fas fa-spinner"></i></div>
     <table v-else>
@@ -12,8 +12,8 @@
           <th>action</th>
         </tr>
       </thead>
-      <tbody v-if="posts && posts.length">
-        <tr v-for="(post, index) in posts" :key="index" v-show="setPaginate(index, posts)">
+      <tbody v-if="postList && postList.length">
+        <tr v-for="(post, index) in postList" :key="index" v-show="setPaginate(index)">
           <td>{{ post.id }}</td>
           <td>{{ post.userId }}</td>
           <td>{{ post.title }}</td>
@@ -32,6 +32,7 @@
 
 <script>
 import ButtonCount from "./ButtonCount.vue";
+import axios from 'axios'
 
  export default {
     components: {
@@ -40,38 +41,44 @@ import ButtonCount from "./ButtonCount.vue";
     data () {
       return {
        current: 1,
-       paginate_total: 0,
+       postList: [],
+       loading: true,
        timer: null,
+       paginate: 10,
+       paginate_total: 0
       }
     },
     methods: {
-        setPaginate(i, posts) {
-          this.paginate_total = posts.length/this.$store.state.paginate;
-          if (this.current == 1) return i < this.$store.state.paginate;
-          else return i >= (this.$store.state.paginate * (this.current - 1)) && i < (this.current * this.$store.state.paginate);
+        getPost() {
+          axios.get('https://jsonplaceholder.typicode.com/posts')
+          .then(response => this.postList = response.data)
+          .catch(error => console.log(error))
+          .finally(() => this.loading = false)
+        },
+        setPaginate(i) {
+          this.paginate_total = this.postList.length/this.paginate;
+          if (this.current == 1) return i < this.paginate;
+          else return i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate);
         },
         addPost(post) {
           this.$store.dispatch("addPost", post);
         }
     },
-    computed: {
-        posts() {
-            return this.$store.state.posts
-        },
-        paginate() {
-          return this.$store.state.paginate
-        },
-        loading() {
-          return this.$store.state.loading
-        }
-    },
-    mounted() {
+    // mounted() {
+    //   this.timer = setTimeout(() => {
+    //     this.$store.dispatch("getPosts");
+    //   }, 2000);
+    // },
+    // beforeDestroy() {
+    //    clearTimout(this.timer);
+    // }
+    created() {
       this.timer = setTimeout(() => {
-        this.$store.dispatch("getPosts");
+        this.getPost()
       }, 2000);
     },
     beforeDestroy() {
-       clearTimout(this.timer);
+      clearTimout(this.timer)
     }
 }
 

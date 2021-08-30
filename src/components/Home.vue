@@ -5,7 +5,7 @@
   <ButtonCount @onCount="onDecrement">Decrement</ButtonCount>
   <div class="box-posts">
     <h2 class="title">Post List</h2>
-    <ul v-for="(post, index) in postHome" :key="index">
+    <ul v-for="(post, index) in posts" :key="index">
       <li>id: {{ post.id }}</li>
       <li>userId: {{ post.userId }}</li>
       <li>title: {{ post.title }}</li>
@@ -38,8 +38,8 @@ import ButtonCount from "./ButtonCount.vue";
         }
     },
     computed: {
-      postHome() {
-        return this.$store.state.postHome
+      posts() {
+        return this.$store.state.posts
       }
     }
 }
