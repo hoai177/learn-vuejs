@@ -64,14 +64,6 @@ import axios from 'axios'
           this.$store.dispatch("addPost", post);
         }
     },
-    // mounted() {
-    //   this.timer = setTimeout(() => {
-    //     this.$store.dispatch("getPosts");
-    //   }, 2000);
-    // },
-    // beforeDestroy() {
-    //    clearTimout(this.timer);
-    // }
     created() {
       this.timer = setTimeout(() => {
         this.getPost()
